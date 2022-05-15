@@ -1,0 +1,37 @@
+<v-layout wrap justify-center>
+    <v-flex xs12 sm10 md6 lg6>
+        <v-card outlined>
+            <form id="loginFormSubmit" novalidate action="javascript:void(0)"
+                v-on:submit.capture="loginFormSubmit($event)" style="width: 100%" ref="loginRef">
+                <v-flex xs12 text-xs-center>
+                    <v-card-text class="pb-0">
+                        <span class="text-xs-center headline pt-3">Login</span>
+                    </v-card-text>
+                </v-flex>
+                <v-card-text>
+                    <v-layout>
+                        <v-flex xs12>
+                            <v-text-field light v-model.trim="userName" autocapitalize="off" name="username" novalidate
+                                label="Username" prepend-icon="person" :rules="[rules.requiredUsername]" type="url"
+                                ref="userNameRef"></v-text-field>
+                        </v-flex>
+                    </v-layout>
+                    <v-layout>
+                        <v-flex xs12>
+                            <v-text-field novalidate autocapitalize="off" label="password" v-model.trim="password"
+                                name="resAdminPass" :append-icon="passwordToggle ? 'visibility' : 'visibility_off'"
+                                @click:append="() => (passwordToggle = !passwordToggle)"
+                                :type="passwordToggle ? 'password' : 'url'" prepend-icon="lock"
+                                :rules="[rules.requiredPassword]" ref="passwordRef"></v-text-field>
+                        </v-flex>
+                    </v-layout>
+                    <v-layout>
+                        <v-flex xs12 class="text-center">
+                            <v-btn type="submit" color="primary" class="white--text">Login</v-btn>
+                        </v-flex>
+                    </v-layout>
+                </v-card-text>
+            </form>
+        </v-card>
+    </v-flex>
+</v-layout>
